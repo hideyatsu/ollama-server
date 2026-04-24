@@ -4,11 +4,13 @@ services:
     container_name: ollama
     restart: unless-stopped
     ports:
-      - "11434:11434"
+      - "${OLLAMA_PORT:-11434}:11434"
     volumes:
       - ollama_data:/root/.ollama
     environment:
-      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_HOST=${OLLAMA_HOST:-0.0.0.0}
+      - OLLAMA_ORIGIN=${OLLAMA_ORIGIN:-http://localhost:11434}
+      - OLLAMA_LOG_LEVEL=${OLLAMA_LOG_LEVEL:-info}
     networks:
       - ollama_network
     # Optional: GPU support (uncomment if you have NVIDIA GPU)
