@@ -1,0 +1,17 @@
+# Git ignore for ollama-server
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+C:\$RECYCLE.BIN\
+C:\System Volume Information\
