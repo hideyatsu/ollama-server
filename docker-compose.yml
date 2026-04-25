@@ -17,7 +17,7 @@ services:
       resources:
         limits:
           cpus: ${OLLAMA_CPU_LIMIT:-4}
-          memory: ${OLLAMA_MEMORY_LIMIT:-8G}
+          memory: ${OLLAMA_MEMORY_LIMIT:-16G}
         # Optional: GPU support (uncomment if you have NVIDIA GPU)
         # reservations:
         #   devices:
@@ -43,8 +43,8 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.5'
-          memory: 1G
+          cpus: '2'
+          memory: 8G
 
 networks:
   ollama_network:
