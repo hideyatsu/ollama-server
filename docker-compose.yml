@@ -35,7 +35,7 @@ services:
       - ./litellm-config.yaml:/app/config.yaml
     environment:
       - LITELLM_MASTER_KEY=${OLLAMA_API_KEY}
-      - LITELLM_PROXY_BASE_PATH=/litellm-proxy
+
     command: [ "--config", "/app/config.yaml", "--port", "4000" ]
     depends_on:
       - ollama
