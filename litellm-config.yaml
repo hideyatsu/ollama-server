@@ -1,0 +1,8 @@
+model_list:
+  - model_name: "*" # Memungkinkan semua model di Ollama diakses lewat LiteLLM
+    litellm_params:
+      model: ollama_chat/* # Menghubungkan ke endpoint chat Ollama
+      api_base: "http://ollama:11434" # Menggunakan hostname service di docker-compose
+
+general_settings:
+  master_key: "${LITELLM_MASTER_KEY}" # API Key utama yang akan dicek
