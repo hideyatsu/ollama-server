@@ -6,7 +6,7 @@ services:
     ports:
       - "${OLLAMA_PORT:-11434}:11434"
     volumes:
-      - ollama_data:/root/.ollama
+      - ${OLLAMA_DATA_PATH:-./ollama_data}:/root/.ollama
     environment:
       - OLLAMA_HOST=${OLLAMA_HOST:-0.0.0.0}
       - OLLAMA_ORIGIN=${OLLAMA_ORIGIN:-http://localhost:11434}
@@ -22,9 +22,6 @@ services:
     #           count: 1
     #           capabilities: [gpu]
 
-volumes:
-  ollama_data:
-    driver: local
 
 networks:
   ollama_network:
