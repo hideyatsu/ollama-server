@@ -11,7 +11,11 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+.roo/
 
 # OS
 C:\$RECYCLE.BIN\
 C:\System Volume Information\
+
+# Data
+ollama_data/
