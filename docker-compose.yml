@@ -3,7 +3,8 @@ services:
     image: ollama/ollama:latest
     container_name: ${OLLAMA_CONTAINER_NAME:-ollama-server}
     restart: unless-stopped
-
+    ports:
+      - "${OLLAMA_PORT:-11434}:11434"
     volumes:
       - ${OLLAMA_DATA_PATH:-./ollama_data}:/root/.ollama
     environment:
