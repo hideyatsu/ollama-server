@@ -92,6 +92,7 @@ docker exec ollama ollama pull llama2
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `OLLAMA_HOST` | `127.0.0.1` | Set ke `0.0.0.0` untuk akses dari luar container |
+| `OLLAMA_ORIGIN` | `http://localhost:11434` | Mengatur origin yang diizinkan untuk request CORS |
 
 ## Troubleshooting
 
