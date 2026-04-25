@@ -10,7 +10,6 @@ services:
       - OLLAMA_HOST=${OLLAMA_HOST:-0.0.0.0}
       - OLLAMA_ORIGIN=${OLLAMA_ORIGIN:-http://localhost:11434}
       - OLLAMA_LOG_LEVEL=${OLLAMA_LOG_LEVEL:-info}
-      - OLLAMA_API_KEY=${OLLAMA_API_KEY:-}
     networks:
       - ollama_network
     deploy:
