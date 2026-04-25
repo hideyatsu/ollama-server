@@ -50,6 +50,7 @@ services:
       - UI_USERNAME=${LITELLM_UI_USERNAME}
       - UI_PASSWORD=${LITELLM_UI_PASSWORD}
       - DATABASE_URL=postgresql://litellm:litellm@litellm-db:5432/litellm
+      - STORE_MODEL_IN_DB=True
     command: [ "--config", "/app/config.yaml", "--port", "4000" ]
     depends_on:
       - ollama
