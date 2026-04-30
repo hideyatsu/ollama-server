@@ -27,12 +27,14 @@ services:
 
   litellm-db:
     image: postgres:16-alpine
-    container_name: litellm-db
+    container_name: ${LITELLM_DB_CONTAINER_NAME:-litellm-db}
     restart: unless-stopped
+    ports:
+      - "${LITELLM_DB_PORT:-5432}:5432"
     environment:
-      - POSTGRES_DB=litellm
-      - POSTGRES_USER=litellm
-      - POSTGRES_PASSWORD=litellm
+      - POSTGRES_DB=${LITELLM_DB_NAME:-litellm}
+      - POSTGRES_USER=${LITELLM_DB_USERNAME:-litellm}
+      - POSTGRES_PASSWORD=${LITELLM_DB_PASSWORD:-litellm}
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
@@ -50,9 +52,16 @@ services:
       - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY}
       - UI_USERNAME=${LITELLM_UI_USERNAME}
       - UI_PASSWORD=${LITELLM_UI_PASSWORD}
-      - DATABASE_URL=postgresql://litellm:litellm@litellm-db:5432/litellm
-      - STORE_MODEL_IN_DB=True
-    command: [ "--config", "/app/config.yaml", "--port", "4000" ]
+      - DATABASE_URL=postgresql://${LITELLM_DB_USERNAME}:${LITELLM_DB_PASSWORD}@${LITELLM_DB_CONTAINER_NAME}:${LITELLM_DB_PORT}/${LITELLM_DB_NAME}
+      - TELEMETRY=False
+      - LOG_LEVEL=${LITELLM_LOG_LEVEL:-debug}
+      - ALLOW_SLASHES=True
+      - CORS_ORIGINS=${LITELLM_CORS_ORIGINS:-http://localhost:${OLLAMA_PORT:-11434}}
+    command:
+      - "--config"
+      - "/app/config.yaml"
+      - "--port"
+      - "${LITELLM_PORT:-4000}"
     depends_on:
       - ollama
       - litellm-db
