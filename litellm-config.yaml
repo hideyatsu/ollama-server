@@ -1,9 +1,3 @@
-model_list:
-  - model_name: "*" # Memungkinkan semua model di Ollama diakses lewat LiteLLM
-    litellm_params:
-      model: ollama_chat/* # Menghubungkan ke endpoint chat Ollama
-      api_base: "os.environ/OLLAMA_API_BASE" # Menggunakan env var yang dikirim dari docker-compose
-
 general_settings:
-  # LiteLLM akan otomatis mengambil LITELLM_MASTER_KEY dan DATABASE_URL dari environment variable
   telemetry: false
+model_list: []
