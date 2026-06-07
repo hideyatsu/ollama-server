@@ -1,3 +1,15 @@
 general_settings:
   telemetry: false
-model_list: []
+model_list:
+  - model_name: 9router
+    litellm_params:
+      model: openai/combo-deepseek-v4-flash
+      api_base: http://host.docker.internal:20128/v1
+      api_key: sk-2c672ed07d253019-ftt4ij-bb1c32b1
+      stream: true
+  - model_name: 9router-gemini
+    litellm_params:
+      model: openai/combo-gemini
+      api_base: http://host.docker.internal:20128/v1
+      api_key: sk-2c6...b1
+      stream: true
